@@ -4,7 +4,7 @@
 const express = require("express")
 const router = express.Router()
 
-const Log = require("../models/logs")
+const Log = require("../models/logs.js")
 
 // // Login gate for Stretch Goals
 // const isLoggedIn = (req, res, next) => {
