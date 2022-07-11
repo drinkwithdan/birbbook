@@ -5,10 +5,12 @@
 Birb-book will allow bird-spotting enthusiasts to access, edit and add to a collection of logs for bird spottings. Each log will contain:
 
 (MVP)
- - Log date
- - Location
+ - id (created by mongoDB)
+ - Log date (timestamps)
  - Bird name
+ - Location
  - Notes
+ - Image (initially handled by LoremFlickr)
 
 (Stretch goals)
  1. Users collection with login and sessions (can only post / edit when logged in)
