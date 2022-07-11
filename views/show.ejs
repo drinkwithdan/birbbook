@@ -1,5 +1,15 @@
 <%- include ("./partials/head.ejs") %>
 
-SHOW page
+<h1><%= log.name %></h1>
+<h3><%= log.location %></h3>
+<p><%= log.notes %></p>
+<p><%= log.createdAt %></p>
+<a class="btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+<form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
+    <input class="btn btn-danger" type="submit" value="Delete" />
+</form>
+<img src="<%= log.imageURL %>" alt="Photo of bird">
+
+<a href="<%= baseUrl %>"> < Back to Index</a>
 
 <%- include ("./partials/footer.ejs") %>

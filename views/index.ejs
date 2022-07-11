@@ -1,5 +1,26 @@
 <%- include ("./partials/head.ejs") %>
 
-INDEX page
+<h1>Logs Index</h1>
+
+<a class="btn btn-primary" href="<%= baseUrl %>/new">Add Log</a>
+
+<ul class="index-list">
+    <% for (let log of logs) { %>
+       <li class="index-log">
+            <a href="<%= baseUrl %>/<%= log.id %>">
+                <img src="<%= log.imageURL %>" class="w-90" alt="Log image">
+                <div class="log-text">
+                    <h3 class="log-name"><%= log.name %></h3>
+                    <h3 class="log-location"><%= log.location %></h3>
+                    <p class="log-notes"><%= log.notes %></p>
+                    <a class="btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+                    <form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete" />
+                    </form>
+                </div>
+            </a>
+       </li> 
+    <% } %>
+</ul>
 
 <%- include ("./partials/footer.ejs") %>

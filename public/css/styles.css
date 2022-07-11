@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.index-list {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.index-log {
+    width: 30%;
+    border: 2px solid black;
+    margin: 3px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.index-log img {
+    max-width: 100%;
+}
+
+.log-text {
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
