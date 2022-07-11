@@ -2,7 +2,8 @@
 
 ### A birdspotter's log book
 
-Birb-book will allow bird-spotting enthusiasts to access, edit and add to a database of logs for bird spottings. Each log will contain:
+Birb-book will allow bird-spotting enthusiasts to access, edit and add to a collection of logs for bird spottings. Each log will contain:
+
 (MVP)
  - Log date
  - Location
@@ -10,8 +11,8 @@ Birb-book will allow bird-spotting enthusiasts to access, edit and add to a data
  - Notes
 
 (Stretch goals)
- 1. Users database with login and sessions (can only post / edit when logged in)
- 2. Bird database with link for `More info` about the relevant bird
+ 1. Users collection with login and sessions (can only post / edit when logged in)
+ 2. Birds collection with link for `More info` about the relevant bird
  3. Locations map API
 
 
