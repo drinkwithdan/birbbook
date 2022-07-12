@@ -41,3 +41,13 @@ a {
     color: black;
     text-decoration: none;
 }
+
+.log-map {
+    height: 300px;
+    width:300px;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}

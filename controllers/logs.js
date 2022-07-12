@@ -3,18 +3,18 @@
 /////////////////////////////////////////
 const express = require("express")
 const router = express.Router()
+const multer = require("multer")
 
 const Log = require("../models/logs.js")
+const upload = multer({ dest: "uploads" })
 
-// // Login gate for Stretch Goals
-// const isLoggedIn = (req, res, next) => {
-//     if (!req.session.currentUser) {
-//       return res.redirect('/login')
-//     }
-//     next()
-//   }
-
-// router.use(isLoggedIn)
+// Login gate for Stretch Goals 1.
+const isLoggedIn = (req, res, next) => {
+    if (!req.session.currentUser) {
+      return res.redirect('/login')
+    }
+    next()
+  }
 
 /////////////////////////////////////////
 // ROUTES
@@ -26,6 +26,7 @@ router.get("/", (req, res)=>{
         .exec()
         .then((logs)=>{
             res.render("index.ejs", {
+                currentUser: req.session.currentUser,
                 logs: logs,
                 baseUrl: req.baseUrl,
                 tabTitle: "Logs Index"
@@ -33,9 +34,12 @@ router.get("/", (req, res)=>{
         })
 })
 
+router.use(isLoggedIn)
+
 // NEW route /new GET
 router.get("/new", (req, res)=>{
     res.render("new.ejs", {
+        currentUser: req.session.currentUser,
         baseUrl: req.baseUrl,
         tabTitle: "Add New Log"
     })
@@ -60,6 +64,7 @@ router.get("/:id", (req, res)=>{
         .exec()
         .then((log)=>{
             res.render("show.ejs", {
+                currentUser: req.session.currentUser,
                 baseUrl: req.baseUrl,
                 log: log,
                 tabTitle: log.name
@@ -95,6 +100,7 @@ router.get("/:id/edit", (req, res)=>{
         .exec()
         .then((log)=>{
             res.render("edit.ejs", {
+                currentUser: req.session.currentUser,
                 baseUrl: req.baseUrl,
                 log: log,
                 tabTitle: "Update log: " + log.name

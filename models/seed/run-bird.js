@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
-const Log = require("../logs.js")
-const seedLogs = require("./seed-logs.js")
+const Bird = require("../birds.js")
+const seedBirds = require("./seed-birds.js")
 const dbUrl = "mongodb://localhost:27017/birbbook"
 
 mongoose.connect(dbUrl, ()=>{
-    // Log.insertMany(seedLogs)
-    //     .then((logs)=>{
-    //         console.log(logs)
+    // Bird.insertMany(seedBirds)
+    //     .then((birds)=>{
+    //         console.log(birds)
     //         mongoose.connection.close()
     //     })
     console.log("Connected to logs DB")

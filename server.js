@@ -10,10 +10,10 @@ const session = require("express-session")
 // const flash = require("express-flash")
 const mongoDBSession = require("connect-mongodb-session")
 
-// const usersController = require("./controllers/users")
+const usersController = require("./controllers/users")
 const logsController = require("./controllers/logs")
 // const birdsController = require("./controllers/birds")
-// const sessionsController = require("./controllers/sessions")
+const sessionsController = require("./controllers/sessions")
 
 const app = express()
 const PORT = process.env.PORT
@@ -44,8 +44,8 @@ app.use(express.static("public"))
 app.use(methodOverride("_method"))
 
 // CONTROLLERS
-// app.use("/", sessionsController)
-// app.use("/users", usersController)
+app.use("/", sessionsController)
+app.use("/users", usersController)
 app.use("/logs", logsController)
 
 // CONNECTIONS

@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>
+
+<form action="<%= baseUrl %>/login" method="post">
+    <h1>Log In</h1>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" required />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" required />
+    </div>
+    <input class="btn btn-primary" type="submit" value="Log In">
+
+    <p>
+        Don't have an account yet?
+        <a href="/users/signup">Sign up here!</a>
+    </p>
+
+</form>
+
+<%- include('../partials/footer.ejs') %>
