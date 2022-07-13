@@ -20,6 +20,12 @@
 
     <img src="<%= bird.imageURL %>" class="w-90" alt="Bird image"><br>
 
+    <% if (returnId) { %>
+        <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
+    <% } else { %>
+        <a class="btn btn-secondary" href="/birds">Back to Index</a>
+    <% } %>
+
 </div>
 
 <%- include ("../partials/footer.ejs") %>

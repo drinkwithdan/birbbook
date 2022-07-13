@@ -49,12 +49,13 @@ router.post("/", (req, res)=>{
     } else {
         req.body.native = false
     }
-    if (req.body.imageURL === "") {
-        req.body.imageURL = "https://loremflickr.com/600/600" + req.body.name.replace(" ", "_")
-    }
+    // if (req.body.imageURL === "") {
+    //     req.body.imageURL = "https://loremflickr.com/600/600" + req.body.name.replace(" ", "_")
+    // }
+    req.body.imageURL = req.file.path
     Bird.create(req.body)
         .then((newBird)=>{
-            // Flash "Created new bird"
+            console.log("Created new bird", newBird);
             res.redirect(req.baseUrl)
         })
 })
@@ -64,8 +65,10 @@ router.get("/:id", (req, res)=>{
     Bird.findById(req.params.id)
         .exec()
         .then((bird)=>{
+            console.log(req.query);
             res.render("birds/show.ejs", {
                 bird: bird,
+                returnId: req.query.returnId,
                 currentUser: req.session.currentUser,
                 baseUrl: req.baseUrl,
                 tabTitle: bird.name

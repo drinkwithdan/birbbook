@@ -9,7 +9,7 @@
 <p class="log-birds">
     Birds:<br>  
     <% for (let bird of log.birds) { %>
-        <a href="/birds/<%= bird.id %>"><%= bird.name %></a><br>
+        <a href="/birds/<%= bird.id %>?returnId=<%= log.id %>"><%= bird.name %> (see more details)</a><br>
     <% } %>
 </p>
 

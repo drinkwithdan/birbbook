@@ -6,35 +6,26 @@ html, body {
     height: 100%;
 }
 
+header {
+    width: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.index-list {
+.card-container {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
+    align-items: flex-end;
 }
 
-.index-log {
-    width: 30%;
-    border: 2px solid black;
-    margin: 3px;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.index-log img {
-    max-width: 100%;
-}
-
-.log-text {
-    text-decoration: none;
-    color: black;
+.card-body {
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -42,12 +33,7 @@ a {
     text-decoration: none;
 }
 
-.log-map {
-    height: 300px;
-    width:300px;
-}
-
-#map {
-    height: 100%;
-    width: 100%;
+.card-form-container {
+    display: flex;
+    justify-content: space-around;
 }

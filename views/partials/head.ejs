@@ -9,31 +9,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <nav>
-            <% if (typeof currentUser !== undefined && currentUser) { %>
-                <form action="/logout?_method=DELETE" method="post">
-                    <input class="btn btn-secondary" type="submit" value="Log Out">
-                </form>
-            <% } else { %>
-                <a class="btn btn-secondary" href="/login">Log In</a>
-            <% } %>
-            <div class="flash-messages">
-                <% if (messages.success) { %>
-                    <% for (let message of messages.success) { %>
-                        <p class="alert alert-success"><%= message %></p>
-                    <% } %>
-                <% } %>
-                <% if (messages.info) { %>
-                    <% for (let message of messages.info) { %>
-                        <p class="alert alert-secondary"><%= message %></p>
-                    <% } %>
-                <% } %>
-                <% if (messages.error) { %>
-                    <% for (let message of messages.error) { %>
-                        <p class="alert alert-danger"><%= message %></p>
-                    <% } %>
-                <% } %>
-            </div>
-        </nav>
+    <header class="bg-light">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                
+                <a class="navbar-brand" href="#">Birbbook</a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logs">Logs</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/birds">Birds</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.github.com/drinkwithdan">GitHub</a>
+                            </li>
+
+
+                    </ul>
+
+                    <div class="d-flex">
+                        <% if (typeof currentUser !== undefined && currentUser) { %>
+                            
+                            <form action="/logout?_method=DELETE" method="post">
+                                <input class="btn btn-secondary" type="submit" value="Log Out">
+                            </form>
+                    
+                        <% } else { %>
+                            <a class="btn btn-primary" href="/login">Log In</a>
+                        <% } %>
+                    </div>
+
+                </div>
+            
+            </nav>
+        </div>
     </header>

@@ -3,7 +3,7 @@
 /////////////////////////////////////////
 const express = require("express")
 const router = express.Router()
-// const multer = require("multer")
+const upload = require("../middlewares/upload.js")
 
 const Bird = require("../models/birds.js")
 const Log = require("../models/logs.js")
@@ -57,11 +57,8 @@ router.get("/new", (req, res)=>{
 })
 
 // NEW route / POST
-router.post("/", (req, res)=>{
-    // // Was adding a Lorem Ipsum image based on the bird's name
-    // if (req.body.imageURL === "") {
-    //     req.body.imageURL = "https://loremflickr.com/600/600/" + (req.body.name.replace(" ", "_"))
-    // }
+router.post("/", upload.single("image"), (req, res)=>{
+    req.body.imageURL = req.file.path
     console.log(req.body)
     Log.create(req.body)
         .then((newLog)=>{

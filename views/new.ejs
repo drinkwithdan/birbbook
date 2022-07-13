@@ -2,7 +2,7 @@
 <h1>Add New Log</h1>
 
 <div class="form-group">
-    <form action="<%= baseUrl %>" method="post">
+    <form action="<%= baseUrl %>" method="post" enctype="multipart/form-data" >
       <label for="name">Date</label>
       <input
         type="date"
@@ -19,10 +19,12 @@
         required
         id="location" />
 
-      <div class="bird-checks"
+      <div class="bird-checks">
           <% for (let bird of birds) { %>
-              <label for="<%= bird.id %>"><%= bird.name %></label>
-              <input type="checkbox" name="birds" value="<%= bird.id %>" id="birds>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="birds" value="<%= bird.id %>" id="birds >
+                <label class="form-check-label" for="<%= bird.id %>"><%= bird.name %></label>
+              </div>
           <% } %>
       </div>
 
@@ -33,12 +35,12 @@
         name="notes"
         id="notes" />
       
-      <label for="imageURL">Image URL</label>
+      <label for="image">Image</label>
       <input
-        type="text"
+        type="file"
         class="form-control"
-        name="imageURL"
-        id="imageURL" />
+        name="image"
+        id="image" />
   
       <input class="btn btn-primary" type="submit" value="Create Log" />
     </form>
