@@ -1,0 +1,44 @@
+<%- include ("../partials/head.ejs") %>
+
+<h1>Birds Index</h1>
+
+<a class="btn btn-primary" href="<%= baseUrl %>/new">Add Bird</a>
+
+<ul class="index-list">
+    <% for (let bird of birds) { %>
+       <li class="index-log">
+
+            <a href="<%= baseUrl %>/<%= bird.id %>">
+                <img src="<%= bird.imageURL %>" class="w-90" alt="Bird image">
+            </a>
+                <div class="bird-text">
+
+                    <h3 class="bird-name"><%= bird.name %></h3>
+
+                    <p>Type: <%= bird.type %></p>
+
+                    <p class="bird-conservation">Conservation Status: <%= bird.conservationStatus %></p>
+
+                    <p class="bird-native">  
+                        <% if (bird.native === true) { %>
+                            Native
+                        <% } else { %>
+                            Not Native
+                        <% } %>
+                    </p>
+
+                    <p class="bird-description"><%= bird.description %></p>
+
+                    <a class="btn btn-primary" href="<%= baseUrl %>/<%= bird.id %>/edit">Edit</a>
+
+                    <form action="<%= baseUrl %>/<%= bird.id %>?_method=DELETE" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete" />
+                    </form>
+
+                </div>
+            
+       </li> 
+    <% } %>
+</ul>
+
+<%- include ("../partials/footer.ejs") %>

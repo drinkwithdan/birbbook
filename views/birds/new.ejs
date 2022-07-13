@@ -1,0 +1,31 @@
+<%- include ("../partials/head.ejs") %>
+
+<h1>New Bird</h1>
+
+<div class="form-group">
+    <form action="<%= baseUrl %>" method="post">
+      <label for="name">Name</label>
+      <input type="name" class="form-control" name="name" required id="name" />
+  
+      <label for="type">Type</label>
+      <input type="text" class="form-control" name="type" id="type" />
+
+      <label for="conservationStatus">Conservation Status</label>
+      <input type="text" class="form-control" name="conservationStatus" id="conservationStatus" />
+
+      <label for="native">Native?</label>  
+      <input type="checkbox" name="native" id="native" /><br>
+
+      <label for="desciption">Description</label>
+      <input type="textarea" class="form-control" name="description" id="description" />
+      
+      <label for="imageURL">Image URL</label>
+      <input type="text" class="form-control" name="imageURL" id="imageURL" />
+  
+      <input class="btn btn-primary" type="submit" value="Create Bird" />
+    </form>
+  </div>
+
+<a href="<%= baseUrl %>"> < Back to Index</a>
+
+<%- include ("../partials/footer.ejs") %>

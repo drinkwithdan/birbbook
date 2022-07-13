@@ -4,11 +4,27 @@
 
 <div class="form-group">
     <form action="<%= baseUrl %>/<%= log.id %>?_method=PUT" method="post">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" required id="name" value="<%= log.name %>" />
+      <label for="name">Date</label>
+      <input type="date" class="form-control" name="date" required id="date" value="<%= log.date.toLocaleDateString("en-CA") %>" />
   
       <label for="location">Location</label>
       <input type="text" class="form-control" name="location" required id="location" value="<%= log.location %>" />
+
+      <div class="bird-checks">
+        <% for (let bird of birds) { %>
+          <label for="<%= bird.id %>" class=""><%= bird.name %></label>
+          <input 
+            type="checkbox" 
+            class="form-check-label" 
+            name="birds" 
+            id="<%= bird.id %>" 
+            value="<%= bird.id %>"
+            <% if (log.birds.indexOf(bird.id) !== -1) { %>
+              checked
+            <% } %>
+            />
+        <% } %>
+      </div>
 
       <label for="notes">Notes</label>
       <input type="textarea" class="form-control" name="notes" id="notes" value="<%= log.notes %>" />

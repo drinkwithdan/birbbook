@@ -1,13 +1,24 @@
 <%- include ("./partials/head.ejs") %>
 
-<h1><%= log.name %></h1>
-<h3><%= log.location %></h3>
-<p><%= log.notes %></p>
-<p><%= log.createdAt %></p>
+<h3><%= log.date.toLocaleDateString("en-US") %></h3>
+
+<p>Location: <%= log.location %></p>
+
+<p>Notes: <%= log.notes %></p>
+
+<p class="log-birds">
+    Birds:<br>  
+    <% for (let bird of log.birds) { %>
+        <a href="/birds/<%= bird.id %>"><%= bird.name %></a><br>
+    <% } %>
+</p>
+
 <a class="btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+
 <form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
     <input class="btn btn-danger" type="submit" value="Delete" />
 </form>
+
 <img src="<%= log.imageURL %>" alt="Photo of bird">
 
 <a href="<%= baseUrl %>"> < Back to Index</a>

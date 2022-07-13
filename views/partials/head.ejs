@@ -18,5 +18,22 @@
             <% } else { %>
                 <a class="btn btn-secondary" href="/login">Log In</a>
             <% } %>
+            <div class="flash-messages">
+                <% if (messages.success) { %>
+                    <% for (let message of messages.success) { %>
+                        <p class="alert alert-success"><%= message %></p>
+                    <% } %>
+                <% } %>
+                <% if (messages.info) { %>
+                    <% for (let message of messages.info) { %>
+                        <p class="alert alert-secondary"><%= message %></p>
+                    <% } %>
+                <% } %>
+                <% if (messages.error) { %>
+                    <% for (let message of messages.error) { %>
+                        <p class="alert alert-danger"><%= message %></p>
+                    <% } %>
+                <% } %>
+            </div>
         </nav>
     </header>

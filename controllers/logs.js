@@ -3,10 +3,11 @@
 /////////////////////////////////////////
 const express = require("express")
 const router = express.Router()
-const multer = require("multer")
+// const multer = require("multer")
 
+const Bird = require("../models/birds.js")
 const Log = require("../models/logs.js")
-const upload = multer({ dest: "uploads" })
+// const upload = multer({ dest: "uploads" })
 
 // Login gate for Stretch Goals 1.
 const isLoggedIn = (req, res, next) => {
@@ -22,34 +23,46 @@ const isLoggedIn = (req, res, next) => {
 
 // INDEX route /logs GET
 router.get("/", (req, res)=>{
-    Log.find()
-        .exec()
-        .then((logs)=>{
-            res.render("index.ejs", {
-                currentUser: req.session.currentUser,
-                logs: logs,
-                baseUrl: req.baseUrl,
-                tabTitle: "Logs Index"
+            Log.find()
+            .populate("birds")
+            .exec()
+            .then((logs)=>{
+                res.render("index.ejs", {
+                    currentUser: req.session.currentUser,
+                    logs: logs,
+                    baseUrl: req.baseUrl,
+                    tabTitle: "Logs Index"
+                })
             })
-        })
 })
 
-router.use(isLoggedIn)
+// // Deactivated login gate for debugging
+// router.use(isLoggedIn)
 
 // NEW route /new GET
 router.get("/new", (req, res)=>{
-    res.render("new.ejs", {
-        currentUser: req.session.currentUser,
-        baseUrl: req.baseUrl,
-        tabTitle: "Add New Log"
-    })
+    Bird.find()
+        .exec()
+        .then((birds)=>{
+            res.render("new.ejs", {
+                birds: birds,
+                currentUser: req.session.currentUser,
+                baseUrl: req.baseUrl,
+                tabTitle: "Add New Log"
+            })
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
 })
 
 // NEW route / POST
 router.post("/", (req, res)=>{
-    if (req.body.imageURL === "") {
-        req.body.imageURL = "https://loremflickr.com/600/600/" + (req.body.name.replace(" ", "_"))
-    }
+    // // Was adding a Lorem Ipsum image based on the bird's name
+    // if (req.body.imageURL === "") {
+    //     req.body.imageURL = "https://loremflickr.com/600/600/" + (req.body.name.replace(" ", "_"))
+    // }
+    console.log(req.body)
     Log.create(req.body)
         .then((newLog)=>{
             // TO-DO: Flash created new log
@@ -60,14 +73,20 @@ router.post("/", (req, res)=>{
 
 // SHOW route /:id GET
 router.get("/:id", (req, res)=>{
-    Log.findById(req.params.id)
+    Bird.find()
         .exec()
-        .then((log)=>{
-            res.render("show.ejs", {
-                currentUser: req.session.currentUser,
-                baseUrl: req.baseUrl,
-                log: log,
-                tabTitle: log.name
+        .then((birds)=>{
+            Log.findById(req.params.id)
+            .populate("birds")
+            .exec()
+            .then((log)=>{
+                res.render("show.ejs", {
+                    birds: birds,
+                    currentUser: req.session.currentUser,
+                    baseUrl: req.baseUrl,
+                    log: log,
+                    tabTitle: log.name
+                })
             })
         })
 })
@@ -96,14 +115,19 @@ router.put("/:id", (req, res)=>{
 
 // EDIT route /:id/edit GET
 router.get("/:id/edit", (req, res)=>{
-    Log.findById(req.params.id)
+    Bird.find()
         .exec()
-        .then((log)=>{
-            res.render("edit.ejs", {
-                currentUser: req.session.currentUser,
-                baseUrl: req.baseUrl,
-                log: log,
-                tabTitle: "Update log: " + log.name
+        .then((birds)=>{
+            Log.findById(req.params.id)
+            .exec()
+            .then((log)=>{
+                res.render("edit.ejs", {
+                    birds: birds,
+                    currentUser: req.session.currentUser,
+                    baseUrl: req.baseUrl,
+                    log: log,
+                    tabTitle: "Update log: " + log.date
+                })
             })
         })
 })

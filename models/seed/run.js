@@ -14,7 +14,7 @@ mongoose.connect(dbUrl, ()=>{
     Log.collection.drop()
         .then(()=>{
             console.log("Logs collection dropped")
-            return Log.insertMany(seedData)
+            return Log.insertMany(seedLogs)
         })
         .then(()=>{
             console.log("Seed logs inserted")

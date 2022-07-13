@@ -23,20 +23,17 @@ sessionsRouter.post("/login", (req, res)=>{
         .then((user)=>{
             if (!user) {
                 //user not found
-                // TO-DO: Flash message "user not found"
-                console.log("User not found")
+                req.flash("error", "Username or password is incorrect")
                 return res.redirect(req.baseUrl + "/login")
             }
             const passwordIsCorrect = bcrypt.compareSync(req.body.password, user.password)
             if (!passwordIsCorrect) {
                 // user found but password incorrect
-                // TO-DO: Flash message "Incorrect username or password"
-                console.log("Incorrect username or password")
-                res.redirect(req.baseUrl + "/logs")
+                req.flash("error", "Username or password is incorrect")
+                res.redirect(req.baseUrl + "/login")
             } else {
                 // user found and password correct
-                // TO-DO: Flash message "User logged in"
-                console.log(user, "logged in")
+                req.flash("success", "User logged in successfully")
                 req.session.currentUser = user
                 res.redirect("/logs")
             }
@@ -46,6 +43,7 @@ sessionsRouter.post("/login", (req, res)=>{
 // localhost:PORT/logout DELETE
 sessionsRouter.delete("/logout", (req, res)=>{
     req.session.destroy(()=>{
+        req.flash("info", "User logged out")
         res.redirect("/logs")
     })
 })

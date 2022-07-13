@@ -1,0 +1,25 @@
+<%- include ("../partials/head.ejs") %>
+
+<div class="bird-text">
+
+    <h3 class="bird-name"><%= bird.name %></h3>
+
+    <p>Type: <%= bird.type %></p>
+
+    <p class="bird-conservation">Conservation Status: <%= bird.conservationStatus %></p>
+
+    <p class="bird-native">  
+        <% if (bird.native === true) { %>
+            Native
+        <% } else { %>
+            Not Native
+        <% } %>
+    </p>
+
+    <p class="bird-description"><%= bird.description %></p>
+
+    <img src="<%= bird.imageURL %>" class="w-90" alt="Bird image"><br>
+
+</div>
+
+<%- include ("../partials/footer.ejs") %>
