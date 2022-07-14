@@ -47,12 +47,12 @@ app.use(methodOverride("_method"))
 
 
 app.use("/", sessionsController)
-app.use("/", (req, res)=>{
-  res.redirect("/login")
-})
 app.use("/users", usersController)
 app.use("/logs", logsController)
 app.use("/birds", birdsController)
+app.use("/", (req, res)=>{
+  res.redirect("/login")
+})
 
 // CONNECTIONS
 mongoose.connect(dbURL, ()=>{
