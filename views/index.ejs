@@ -1,41 +1,49 @@
 <%- include ("./partials/head.ejs") %>
 
-<h1>Logs Index</h1>
+<div class="index-head">
 
-<a class="btn btn-primary" href="<%= baseUrl %>/new">Add Log</a>
+    <a class="btn btn-secondary href="<%= baseUrl %>/new">Add Log</a>
+
+    <h1 class="index-head-h1">Logs Index</h1>
+
+    <div class="index-pic">
+        <img class="log-icon" src="/images/logbook-icon.png" alt="Index pic">
+    </div>
+
+</div>
 
 <div class="card-container">
-    
+    <div class="logs-list">
         <% for (let log of logs) { %>
             <div class="card" style="width: 15rem;">
+
+                <a class="card-header" href="<%= baseUrl %>/<%= log.id %>"><%= log.date.toLocaleDateString("en-US") %></a>
+
                 <img class="card-img-top" src="<%= log.imageURL %>" alt="Log image">
 
                 <div class="card-body">
 
-                    <a class="card-title" href="<%= baseUrl %>/<%= log.id %>"><%= log.date.toLocaleDateString("en-US") %></a>
-
                     <p class="card-subtitle mb-2 text-muted"><%= log.location %></p>
 
-                    <p class="card-text">
-                        Birds:<br>  
+                    <ul class="list-group list-group-flush">
                         <% for (let bird of log.birds) { %>
-                            <%= bird.name %><br>
+                            <li class="list-group-item">
+                                <small class="text-muted"><%= bird.name %></small>
+                            </li>
                         <% } %>
-                    </p>
-
-                    <p class="card-text"><%= log.notes %></p>
+                    </ul>
                     
-                    <div class="card-form-container">
-                        <a class="card-link btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+                    <div class="card-footer">
+                            <a class="card-link btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
 
-                        <form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
-                            <input class="card-link btn btn-danger" type="submit" value="Delete" />
-                        </form>
+                            <form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
+                                <input class="card-link btn btn-danger" type="submit" value="Delete" />
+                            </form>
                     </div>
                 </div>
             </div>
         <% } %>
-
+    </div>
 
 </div>
 

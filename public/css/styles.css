@@ -16,16 +16,56 @@ body {
     align-items: center;
 }
 
-.card-container {
-    width: 90%;
+.index-head {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    justify-content: space-around;
+    margin: 10px;
 }
+
+.index-pic {
+    width: 5%;
+}
+
+.index-pic img {
+    width: 100%;
+}
+
+.logs-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
 .card-body {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.card-img-top {
+    height: 50%;
+    object-fit: cover;
+}
+
+.card-text {
+    margin: 0;
+    padding: 5px;
+}
+
+.card-subtitle {
+    padding: 5px;
+}
+
+.card li {
+    padding: 3px 5px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
 }
 
 a {
