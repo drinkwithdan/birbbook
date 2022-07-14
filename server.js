@@ -44,6 +44,10 @@ app.use(express.static("public"))
 app.use(methodOverride("_method"))
 
 // CONTROLLERS
+app.use("/", (req, res)=>{
+  res.redirect("/login")
+})
+
 app.use("/", sessionsController)
 app.use("/users", usersController)
 app.use("/logs", logsController)
