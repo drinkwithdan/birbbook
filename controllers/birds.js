@@ -17,7 +17,7 @@ const isLoggedIn = (req, res, next) => {
 /////////////////////////////////////////
 
 // // Deactivated login gate for debugging
-// router.use(isLoggedIn)
+router.use(isLoggedIn)
 
 // INDEX route /logs GET
 router.get("/", (req, res)=>{

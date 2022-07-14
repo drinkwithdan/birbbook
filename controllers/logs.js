@@ -36,8 +36,8 @@ router.get("/", (req, res)=>{
             })
 })
 
-// // Deactivated login gate for debugging
-// router.use(isLoggedIn)
+// Deactivated login gate for debugging
+router.use(isLoggedIn)
 
 // NEW route /new GET
 router.get("/new", (req, res)=>{
