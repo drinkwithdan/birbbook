@@ -3,7 +3,7 @@
 <div class="index-head">
 
     <div>
-        <a class="btn btn-secondary" href="<%= baseUrl %>/new">Add Log</a>
+        <a class="btn btn-light" href="<%= baseUrl %>/new">Add Log</a>
     </div>
 
     <h3 class="index-head-h3">Logs Index</h3>
@@ -25,7 +25,7 @@
 
                 <div class="card-body">
 
-                    <p class="card-subtitle mb-2 text-muted"><%= log.location %></p>
+                    <p class="card-subtitle mb-2"><%= log.location %></p>
 
                     <ul class="list-group list-group-flush">
                         <% for (let bird of log.birds) { %>
