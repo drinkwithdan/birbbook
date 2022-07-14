@@ -45,7 +45,11 @@ app.use(methodOverride("_method"))
 
 // CONTROLLERS
 app.use("/", (req, res)=>{
-  res.redirect("/login")
+  res.redirect("/login", {
+    tabTitle: "Log In",
+    baseUrl: req.baseUrl,
+    currentUser: req.session.currentUser
+  })
 })
 
 app.use("/", sessionsController)
