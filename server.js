@@ -44,15 +44,12 @@ app.use(express.static("public"))
 app.use(methodOverride("_method"))
 
 // CONTROLLERS
-app.use("/", (req, res)=>{
-  res.redirect("/login", {
-    // tabTitle: "Log In",
-    // baseUrl: req.baseUrl,
-    // currentUser: req.session.currentUser
-  })
-})
+
 
 app.use("/", sessionsController)
+app.use("/", (req, res)=>{
+  res.redirect("/login")
+})
 app.use("/users", usersController)
 app.use("/logs", logsController)
 app.use("/birds", birdsController)
