@@ -1,51 +1,53 @@
 <%- include ("./partials/head.ejs") %>
 <h1>Add New Log</h1>
 
-<div class="form-group">
-    <form action="<%= baseUrl %>" method="post" enctype="multipart/form-data" >
-      <label for="name">Date</label>
-      <input
-        type="date"
-        class="form-control"
-        name="date"
-        required
-        id="date" />
-  
-      <label for="location">Location</label>
-      <input
-        type="text"
-        class="form-control"
-        name="location"
-        required
-        id="location" />
+<div class="container">
+  <div class="form-group">
+      <form action="<%= baseUrl %>" method="post" enctype="multipart/form-data" >
+        <label for="name">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="date"
+          required
+          id="date" />
+    
+        <label for="location">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          name="location"
+          required
+          id="location" />
 
-      <div class="bird-checks">
-          <% for (let bird of birds) { %>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="birds" value="<%= bird.id %>" id="birds >
-                <label class="form-check-label" for="<%= bird.id %>"><%= bird.name %></label>
-              </div>
-          <% } %>
-      </div>
+        <div class="bird-checks">
+            <% for (let bird of birds) { %>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="birds" value="<%= bird.id %>" id="birds >
+                  <label class="form-check-label" for="<%= bird.id %>"><%= bird.name %></label>
+                </div>
+            <% } %>
+        </div>
 
-      <label for="notes">Notes</label>
-      <input
-        type="textarea"
-        class="form-control"
-        name="notes"
-        id="notes" />
-      
-      <label for="image">Image</label>
-      <input
-        type="file"
-        class="form-control"
-        name="image"
-        id="image" />
-  
-      <input class="btn btn-primary" type="submit" value="Create Log" />
-    </form>
-  </div>
+        <label for="notes">Notes</label>
+        <input
+          type="textarea"
+          class="form-control"
+          name="notes"
+          id="notes" />
+        
+        <label for="image">Image</label>
+        <input
+          type="file"
+          class="form-control"
+          name="image"
+          id="image" />
+    
+        <input class="btn btn-primary" type="submit" value="Create Log" />
+      </form>
+    </div>
+</div>
 
-  <a href="<%= baseUrl %>"> < Back to Index</a>
+  <a class="btn btn-secondary" href="<%= baseUrl %>"> < Back to Index</a>
 
 <%- include ("./partials/footer.ejs") %>

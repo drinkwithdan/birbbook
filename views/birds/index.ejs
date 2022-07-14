@@ -1,44 +1,59 @@
 <%- include ("../partials/head.ejs") %>
 
-<h1>Birds Index</h1>
+<div class="index-head">
 
-<a class="btn btn-primary" href="<%= baseUrl %>/new">Add Bird</a>
+    <div>
+        <a class="btn btn-secondary" href="<%= baseUrl %>/new">Add Bird</a>
+    </div>
 
-<ul class="index-list">
-    <% for (let bird of birds) { %>
-       <li class="index-log">
+    <h3 class="index-head-h3">Birds Index</h3>
 
-            <a href="<%= baseUrl %>/<%= bird.id %>">
-                <img src="<%= bird.imageURL %>" class="w-90" alt="Bird image">
-            </a>
-                <div class="bird-text">
+    <div class="index-pic">
+        <img class="log-icon" src="/images/birb-icon.png" alt="Index pic">
+    </div>
 
-                    <h3 class="bird-name"><%= bird.name %></h3>
+</div>
 
-                    <p>Type: <%= bird.type %></p>
+<div class="card-container" >
+    <div class="logs-list">
 
-                    <p class="bird-conservation">Conservation Status: <%= bird.conservationStatus %></p>
+            <% for (let bird of birds) { %>
+                <div class="card" style="width: 15rem;">
 
-                    <p class="bird-native">  
-                        <% if (bird.native === true) { %>
-                            Native
-                        <% } else { %>
-                            Not Native
-                        <% } %>
-                    </p>
+                        <img class="card-img-top" src="<%= bird.imageURL %>" alt="Bird image">
 
-                    <p class="bird-description"><%= bird.description %></p>
+                        <div class="card-body">
 
-                    <a class="btn btn-primary" href="<%= baseUrl %>/<%= bird.id %>/edit">Edit</a>
+                            <a class="card-header" href="<%= baseUrl %>/<%= bird.id %>"><%= bird.name %></a>
 
-                    <form action="<%= baseUrl %>/<%= bird.id %>?_method=DELETE" method="post">
-                        <input class="btn btn-danger" type="submit" value="Delete" />
-                    </form>
+                            <p class="card-subtitle mb-2 text-muted">Type: <%= bird.type %></p>
 
-                </div>
-            
-       </li> 
-    <% } %>
-</ul>
+                            <p class="card-text">Conservation Status: <%= bird.conservationStatus %></p>
+
+                            <p class="card-text">  
+                                <% if (bird.native === true) { %>
+                                    Native
+                                <% } else { %>
+                                    Not Native
+                                <% } %>
+                            </p>
+
+                            <div class="card-footer">
+
+                                <a class="btn btn-primary" href="<%= baseUrl %>/<%= bird.id %>/edit">Edit</a>
+
+                                <form action="<%= baseUrl %>/<%= bird.id %>?_method=DELETE" method="post">
+                                    <input class="btn btn-danger" type="submit" value="Delete" />
+                                </form>
+
+                            </div>
+
+                        </div>
+                </div>       
+
+            <% } %>
+
+    </div>
+</div>
 
 <%- include ("../partials/footer.ejs") %>

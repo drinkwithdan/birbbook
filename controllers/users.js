@@ -21,7 +21,6 @@ userRouter.post("/", (req, res)=>{
     )
     User.create(req.body)
         .then((newUser)=>{
-            console.log("New user: ", newUser)
             req.session.currentUser = newUser
             res.redirect("/logs")
         })

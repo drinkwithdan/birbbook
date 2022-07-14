@@ -2,6 +2,7 @@
 
 <h1>Edit <%= log.name %></h1>
 
+<div class="container">
 <div class="form-group">
     <form action="<%= baseUrl %>/<%= log.id %>?_method=PUT" method="post">
       <label for="name">Date</label>
@@ -35,7 +36,8 @@
       <input class="btn btn-primary" type="submit" value="Update Log" />
     </form>
   </div>
+</div>
 
-<a href="<%= baseUrl %>"> < Back to Index</a>
+<a class="btn btn-secondary" href="<%= baseUrl %>"> < Back to Index</a>
 
 <%- include ("./partials/footer.ejs") %>

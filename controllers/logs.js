@@ -7,7 +7,7 @@ const upload = require("../middlewares/upload.js")
 
 const Bird = require("../models/birds.js")
 const Log = require("../models/logs.js")
-// const upload = multer({ dest: "uploads" })
+
 
 // Login gate for Stretch Goals 1.
 const isLoggedIn = (req, res, next) => {
@@ -62,8 +62,6 @@ router.post("/", upload.single("image"), (req, res)=>{
     console.log(req.body)
     Log.create(req.body)
         .then((newLog)=>{
-            // TO-DO: Flash created new log
-            console.log("Created new log: ", newLog)
             res.redirect(req.baseUrl)
         })
 })
@@ -93,8 +91,6 @@ router.delete("/:id", (req, res)=>{
     Log.findByIdAndDelete(req.params.id)
         .exec()
         .then((log)=>{
-            // TO-DO: Flash "Deleted log"
-            console.log("Deleted log: ", log)
             res.redirect(req.baseUrl)
         })
 })
@@ -104,8 +100,6 @@ router.put("/:id", (req, res)=>{
     Log.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .exec()
         .then((log)=>{
-            // TO-DO: flash "Updated log"
-            console.log("Updated log: ", log)
             res.redirect(req.baseUrl + "/" + log.id)
         })
 })

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-// const multer = require("multer")
+const upload = require("../middlewares/upload.js")
 
 const Bird = require("../models/birds")
 
@@ -43,7 +43,7 @@ router.get("/new", (req, res)=>{
 })
 
 // NEW route / POST
-router.post("/", (req, res)=>{
+router.post("/", upload.single("image"), (req, res)=>{
     if (req.body.native === "on") {
         req.body.native = true
     } else {
@@ -55,7 +55,6 @@ router.post("/", (req, res)=>{
     req.body.imageURL = req.file.path
     Bird.create(req.body)
         .then((newBird)=>{
-            console.log("Created new bird", newBird);
             res.redirect(req.baseUrl)
         })
 })
@@ -65,7 +64,6 @@ router.get("/:id", (req, res)=>{
     Bird.findById(req.params.id)
         .exec()
         .then((bird)=>{
-            console.log(req.query);
             res.render("birds/show.ejs", {
                 bird: bird,
                 returnId: req.query.returnId,
@@ -81,7 +79,6 @@ router.delete("/:id", (req, res)=>{
     Bird.findByIdAndDelete(req.params.id)
         .exec()
         .then((bird)=>{
-            console.log("Deleted Bird: " + bird)
             res.redirect(req.baseUrl)
         })
 })
@@ -99,8 +96,6 @@ router.put("/:id", (req, res)=>{
     Bird.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .exec()
         .then((bird)=>{
-            //Flash added new bird
-            console.log(bird)
             res.redirect(req.baseUrl + "/" + bird.id)
         })
 })

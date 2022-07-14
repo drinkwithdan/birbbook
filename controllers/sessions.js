@@ -43,7 +43,6 @@ sessionsRouter.post("/login", (req, res)=>{
 // localhost:PORT/logout DELETE
 sessionsRouter.delete("/logout", (req, res)=>{
     req.session.destroy(()=>{
-        // req.flash("info", "User logged out")
         res.redirect("/logs")
     })
 })

@@ -1,26 +1,36 @@
 <%- include ("./partials/head.ejs") %>
 
-<h3><%= log.date.toLocaleDateString("en-US") %></h3>
+<a class="btn btn-secondary" href="<%= baseUrl %>"> < Back to Index</a>
 
-<p>Location: <%= log.location %></p>
+<div class="container">
+    <div class="card">
 
-<p>Notes: <%= log.notes %></p>
+        <img class="card-img-top" id="show-img" src="<%= log.imageURL %>" alt="Photo of bird">
 
-<p class="log-birds">
-    Birds:<br>  
-    <% for (let bird of log.birds) { %>
-        <a href="/birds/<%= bird.id %>?returnId=<%= log.id %>"><%= bird.name %> (see more details)</a><br>
-    <% } %>
-</p>
+        <h3 class="card-title" ><%= log.date.toLocaleDateString("en-US") %></h3>
 
-<a class="btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+        <p class="card-subtitle text-muted" >Location: <%= log.location %></p>
 
-<form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
-    <input class="btn btn-danger" type="submit" value="Delete" />
-</form>
+        <p class="card-text" >Notes: <%= log.notes %></p>
 
-<img src="<%= log.imageURL %>" alt="Photo of bird">
+        <p class="list-group list-group-flush">  
+            <% for (let bird of log.birds) { %>
+                <a class="list-group-item" href="/birds/<%= bird.id %>?returnId=<%= log.id %>"><%= bird.name %> (click for more details)</a>
+            <% } %>
+        </p>
 
-<a href="<%= baseUrl %>"> < Back to Index</a>
+        <div class="card-footer">
+
+            <a class="btn btn-primary" href="<%= baseUrl %>/<%= log.id %>/edit">Edit</a>
+
+            <form action="<%= baseUrl %>/<%= log.id %>?_method=DELETE" method="post">
+                <input class="btn btn-danger" type="submit" value="Delete" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-secondary" href="<%= baseUrl %>"> < Back to Index</a>
 
 <%- include ("./partials/footer.ejs") %>

@@ -1,31 +1,38 @@
 <%- include ("../partials/head.ejs") %>
 
-<div class="bird-text">
+<% if (returnId) { %>
+    <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
+<% } else { %>
+    <a class="btn btn-secondary" href="/birds">Back to Index</a>
+<% } %>
 
-    <h3 class="bird-name"><%= bird.name %></h3>
+<div class="container">
+    <div class="card">
+        
+        <img class="card-img-top" src="<%= bird.imageURL %>" alt="Bird image"><br>
 
-    <p>Type: <%= bird.type %></p>
+        <h3 class="card-title"><%= bird.name %></h3>
 
-    <p class="bird-conservation">Conservation Status: <%= bird.conservationStatus %></p>
+        <p class="card-subtitle text-muted">Type: <%= bird.type %></p>
 
-    <p class="bird-native">  
-        <% if (bird.native === true) { %>
-            Native
-        <% } else { %>
-            Not Native
-        <% } %>
-    </p>
+        <p class="card-text">Conservation Status: <%= bird.conservationStatus %></p>
 
-    <p class="bird-description"><%= bird.description %></p>
+        <p class="card-text">  
+            <% if (bird.native === true) { %>
+                Native
+            <% } else { %>
+                Not Native
+            <% } %>
+        </p>
 
-    <img src="<%= bird.imageURL %>" class="w-90" alt="Bird image"><br>
+        <p class="card-text"><%= bird.description %></p>
 
-    <% if (returnId) { %>
-        <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
-    <% } else { %>
-        <a class="btn btn-secondary" href="/birds">Back to Index</a>
-    <% } %>
-
+    </div>
 </div>
 
+<% if (returnId) { %>
+    <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
+<% } else { %>
+    <a class="btn btn-secondary" href="/birds">Back to Index</a>
+<% } %>
 <%- include ("../partials/footer.ejs") %>
