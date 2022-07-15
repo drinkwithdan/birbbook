@@ -66,6 +66,8 @@ Aside from the above basic functionality, there are some additional features inc
 
  - Further styling and UX aside from the basic Bootstrap functionality.
 
+ - Some kind of admim hierarchy for the users (only admin can alter birds database).
+
 ### How to use
 
 Run the app from the Heroku app at the top, or clone from this GitHub repo.
