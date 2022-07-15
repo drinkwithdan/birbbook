@@ -2,12 +2,14 @@
 
 A birb-spotter's log book. A convenient way to record, view and edit bird-watching expedition data. Access the Heroku-hosted app [here](https://birbbook.herokuapp.com/login).
 
+Blessed with terrible memory, I have often found myself wanting a way to document bird sightings in a digital format so I can go back and relive the excitement at a later date. Enter Birbbook, a full stack app that allows user to log their sightings and build a database of common birds to draw from.
+
 Built using:
- - HTML5, CSS, JavaScript
- - Node.js, express, EJS
- - MongoDB, Mongoose
- - bcrypt hashing
- - Multer, Cloudinary
+ - HTML5, CSS, JavaScript front-end
+ - Node.js, express, EJS (inc. partials)
+ - MongoDB, Mongoose database manipulation
+ - bcrypt password hashing
+ - Multer & Cloudinary image uploads
  - Hosted on GitHub and Heroku
 
 ### CRUD App functionality
