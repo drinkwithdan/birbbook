@@ -21,6 +21,11 @@ body {
     font-family: "Proxima Nova", sans-serif;
 }
 
+/* .container {
+    display: flex;
+    justify-content: center;
+} */
+
 .show-container {
     display:flex;
     justify-content: center;
@@ -31,6 +36,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 10px;
+}
+
+#back-button {
     margin: 10px;
 }
 

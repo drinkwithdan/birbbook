@@ -102,10 +102,10 @@ router.put("/:id", (req, res)=>{
 
 // EDIT route /:id/edit GET
 router.get("/:id/edit", (req, res)=>{
-    Bird.find()
+    Bird.findById(req.params.id)
         .exec()
         .then((bird)=>{
-            res.render("birds/show.ejs", {
+            res.render("birds/edit.ejs", {
                 bird: bird,
                 currentUser: req.session.currentUser,
                 baseUrl: req.baseUrl,

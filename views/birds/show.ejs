@@ -1,9 +1,9 @@
 <%- include ("../partials/head.ejs") %>
 
 <% if (returnId) { %>
-    <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
+    <a class="btn btn-secondary" id="back-button" href="/logs/<%= returnId %>"> < Back to Log</a>
 <% } else { %>
-    <a class="btn btn-secondary" href="/birds">Back to Index</a>
+    <a class="btn btn-secondary" id="back-button" href="/birds">Back to Index</a>
 <% } %>
 
 <div class="container">
@@ -31,8 +31,8 @@
 </div>
 
 <% if (returnId) { %>
-    <a class="btn btn-secondary" href="/logs/<%= returnId %>">Back to Log</a>
+    <a class="btn btn-secondary" id="back-button" href="/logs/<%= returnId %>">< Back to Log</a>
 <% } else { %>
-    <a class="btn btn-secondary" href="/birds">Back to Index</a>
+    <a class="btn btn-secondary" id="back-button" href="/birds">< Back to Index</a>
 <% } %>
 <%- include ("../partials/footer.ejs") %>

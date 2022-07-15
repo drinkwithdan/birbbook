@@ -23,7 +23,7 @@
         <div class="bird-checks">
             <% for (let bird of birds) { %>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" name="birds" value="<%= bird.id %>" id="birds >
+                  <input class="form-check-input" type="checkbox" name="birds" value="<%= bird.id %>" id="birds" >
                   <label class="form-check-label" for="<%= bird.id %>"><%= bird.name %></label>
                 </div>
             <% } %>

@@ -3,7 +3,7 @@
 <h1>Edit <%= bird.name %></h1>
 
 <div class="form-group">
-    <form action="<%= baseUrl %>/<%= log.id %>?_method=PUT" method="post">
+    <form action="<%= baseUrl %>/<%= bird.id %>?_method=PUT" method="post">
       <label for="name">Name</label>
       <input type="name" class="form-control" name="name" required id="name" value="<%= bird.name %>" />
   
@@ -14,11 +14,11 @@
       <input type="text" class="form-control" name="conservationStatus" id="conservationStatus" value="<%= bird.conservationStatus %>" />
 
       <label for="native">Native?</label>  
-      <input type="checkbox" class="form-control" name="native" id="native"
+      <input type="checkbox" class="form-check-label" name="native" id="native"
       <% if (bird.native === true) { %>
         checked
       <% } %>
-       />
+       /><br>
 
       <label for="desciption">Description</label>
       <input type="textarea" class="form-control" name="description" id="description" value="<%= bird.description %>" />
@@ -26,10 +26,10 @@
       <label for="imageURL">Image URL</label>
       <input type="text" class="form-control" name="imageURL" id="imageURL" value="<%= bird.imageURL %>" />
   
-      <input class="btn btn-primary" type="submit" value="Update Bird" />
+      <input class="btn btn-primary" id="back-button" type="submit" value="Update Bird" />
     </form>
   </div>
 
-<a href="<%= baseUrl %>"> < Back to Index</a>
+<a class="btn btn-secondary" id="back-button" href="<%= baseUrl %>"> < Back to Index</a>
 
 <%- include ("../partials/footer.ejs") %>
