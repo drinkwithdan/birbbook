@@ -48,10 +48,11 @@ Access would be restricted by a log gate, meaning only a logged-in user would be
 
 Aside from the above basic functionality, there are some additional features including:
 
+ - Mobile-first responsive design implementing a collapsing Burger menu for the navbar.
  - Bootstrap styling (in future I would default to creating my own CSS styling!).
  - Image upload and storing using `Multer` and `Cloudinary`.
  - Password hashing using `bcrypt`.
- - Data hosted on MongoDB and accessed using Node.js and Mongoose.
+ - Data hosted on `MongoDB` and accessed using `Node.js` and `Mongoose`.
  - Routes aside from the basic `GET` and `POST` would be handled using `method-override` in express and mongoose.
  - Default image templates using [LoremFlickr](https://loremflickr.com/) if no user images are uploaded.
 
